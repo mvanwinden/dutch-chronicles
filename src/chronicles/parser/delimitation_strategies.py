@@ -72,7 +72,7 @@ def delimitation_experiment1(increments) -> List[dict]:
 
             # start a NEW doc (bc date was found)
             partial_doc = {}
-            text_content = [i.get_text() for i in line]
+            text_content = [str(i) for i in line]
             partial_doc['date'] = doc_date
             partial_doc['text'] = text_content
 
@@ -89,7 +89,7 @@ def delimitation_experiment1(increments) -> List[dict]:
             # aka PREVIOUS doc is not empty = being worked on
             if partial_doc:
                 # add text lines to it
-                text_content = [i.get_text() for i in line]
+                text_content = [str(i) for i in line]
                 partial_doc['text'].extend(text_content)
 
             # if there's nothing in cache
@@ -98,7 +98,7 @@ def delimitation_experiment1(increments) -> List[dict]:
                 # start a fresh doc/cache (seems unnecessary)
                 partial_doc = {}
                 # extract and add
-                text_content = [i.get_text() for i in line]
+                text_content = [str(i) for i in line]
                 # fake date
                 partial_doc['date'] = 'NaN_before_date'
                 partial_doc['text'] = text_content
